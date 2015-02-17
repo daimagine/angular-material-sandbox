@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" class="no-js">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+	<title>Angular Learn</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./app/assets/img/ic_logo.png"/>
+
+	<link rel="stylesheet" href="../bower_components/angular-material/angular-material.css"/>
+	<link rel="stylesheet" href="./app/assets/css/style.css"/>
+</head>
+<body ng-app="app" layout="column">
+
+<md-toolbar layout="row">
+	<h2 class="md-toolbar-tools">
+		<span>Angular Learn</span>
+	</h2>
+</md-toolbar>
+
+<md-content layout="column" flex class="md-padding">
+	<div ng-controller="MovieCtrl" ng-init="init()">
+		<md-progress-linear md-mode="indeterminate" class="md-accent" ng-show="loading"></md-progress-linear>
+
+		<md-card ng-hide="loading">
+			<img src="https://xboxoz360.files.wordpress.com/2012/01/2012_oxcgn.jpg" alt="">
+			<md-card-content>
+				<h2>{{ movie.Title }}</h2>
+
+				<p>{{ movie.Plot }}</p>
+			</md-card-content>
+		</md-card>
+
+
+		<div flex ng-hide="loading">
+			<!-- Table starts here -->
+			<table id="table" class="table table-hover table-mc-light-blue">
+				<tbody>
+				<tr>
+					<th>Description</th>
+					<td>{{ movie.Description }}</td>
+				</tr>
+				<tr>
+					<th>Tagline </th>
+					<td>{{ movie.Tagline }}</td>
+				</tr>
+				<tr>
+					<th>Rating </th>
+					<td>{{ movie.Rating }}</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<md-button class="md-accent md-fab md-fab-bottom-right" ng-click="refresh()"
+							 style="position: fixed; margin-right: 20px;">
+			<md-icon icon="./app/assets/img/ic_sync.png" style="width: 24px; height: 24px;"/>
+		</md-button>
+	</div>
+</md-content>
+
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-route/angular-route.js"></script>
+<script src="./bower_components/angular-aria/angular-aria.js"></script>
+<script src="./bower_components/angular-animate/angular-animate.js"></script>
+
+<script src="./bower_components/angular-material/angular-material.js"></script>
+
+<script src="./app/app.js"></script>
+</body>
+</html>
